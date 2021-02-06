@@ -1,0 +1,15 @@
+
+.FirstImg {
+  width: 500px;
+  height: 300px;
+}
+
+.item{
+  color:yellow;
+}
+
+.descriptionBlock{
+  font-size: 20px;
+  color:white;
+  padding: 10px;
+}
