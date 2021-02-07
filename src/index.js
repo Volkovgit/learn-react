@@ -8,7 +8,7 @@ import store from './redux/redux-store';
 import {Provider} from 'react-redux';
 
 
-let rerenderEntire = (state) =>{
+// let rerenderEntire = (state) =>{
   
   ReactDOM.render(
     <React.StrictMode>
@@ -18,15 +18,15 @@ let rerenderEntire = (state) =>{
     </React.StrictMode>,
     document.getElementById('root')
   );
-};
+// };
 
 
 
-rerenderEntire(store.getState());
-store.subscribe(()=>{
-  let state = store.getState();
-  rerenderEntire(state);
-});
+// rerenderEntire(store.getState());
+// store.subscribe(()=>{
+//   let state = store.getState();
+//   rerenderEntire(state);
+// });
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

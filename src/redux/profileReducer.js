@@ -9,10 +9,11 @@ let initialState ={
         { message: "pososi", id: 3, likeCount: 228 },
         { message: "auf", id: 3, likeCount: 228 },
       ],
-      newPostText: "1"
+      newPostText: ""
 }
 
 export const profileReducer = (state = initialState, action) => {
+  // debugger;
   switch (action.type) {
     case ADD_POST:
       let newPost = {
@@ -20,13 +21,12 @@ export const profileReducer = (state = initialState, action) => {
         message: state.newPostText,
         likeCount: 0,
       };
-      state.posts.push(newPost);
-      state.newPostText = "";
-      return state;
-    case UPDATE_NEW_POST_TEXT:
-      state.newPostText = action.newText;
-      return state;
+      return {...state,posts:[...state.posts,newPost],newPostText:''};  
+    case UPDATE_NEW_POST_TEXT:{
+      return{...state, newPostText:action.newText};
+    }
     default: return state;
+    
   }
 
 };
