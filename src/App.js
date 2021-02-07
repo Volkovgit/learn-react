@@ -8,7 +8,7 @@ import Profile from "./components/Profile/Profile";
 import News from "./components/News/News";
 import Music from "./components/Musics/Music";
 import Sidebar from "./components/Sidebar/Sidebar";
-import DialogsContainer from './components/Dialogs/DialogsContainer'
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 const App = (props) => {
   // debugger;
@@ -16,19 +16,22 @@ const App = (props) => {
     <Router>
       <div className="app-wrapper">
         <Header />
-        <Navbar state={props.state.sideBar} />
+        <Navbar
+        //  state={props.state.sideBar} 
+         />
         <div className="app_wrapper_content">
           <Switch>
             <Route
               path="/dialogs"
-              render={ ()=>
-                <DialogsContainer
-                store ={props.store} />
-              }
+              render={() => <DialogsContainer 
+                // store={props.store}
+                 />}
             />
             <Route
               path="/profile"
-              render={() => <Profile store={props.store} />}
+              render={() => <Profile 
+                // store={props.store} 
+              />}
             />
             <Route path="/news" component={() => <News />} />
             <Route path="/music" component={() => <Music />} />
