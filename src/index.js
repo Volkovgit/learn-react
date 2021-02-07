@@ -4,7 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './redux/redux-store';
-import StoreContext, { Provider } from './StoreContext';
+// import StoreContext, { Provider } from './StoreContext';
+import {Provider} from 'react-redux';
 
 
 let rerenderEntire = (state) =>{
@@ -12,9 +13,7 @@ let rerenderEntire = (state) =>{
   ReactDOM.render(
     <React.StrictMode>
       <Provider store={store}>
-      <App 
-      // state ={state} dispatch={store.dispatch.bind(store)} store={store}
-      />,
+      <App/>,
       </Provider>
     </React.StrictMode>,
     document.getElementById('root')
