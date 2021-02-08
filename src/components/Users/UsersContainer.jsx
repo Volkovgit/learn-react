@@ -14,16 +14,20 @@ let mapDispatchToProps=(dispatch)=>{
   return{
     follow: (userId) =>{
       // debugger;
-      dispatch(followAC(userId));
+      let action = followAC(userId)
+      dispatch(action);
     },
     unfollow: (userId)=>{
-      dispatch(unfollowAC(userId));
+      // debugger;
+      let action = unfollowAC(userId);
+      dispatch(action);
     },
     setusers: (users)=>{
       dispatch(setUsersAC(users));
-    }
-  };
+    },
+  }
 };
 
+const MyUserContainer = connect(mapStateToProps,mapDispatchToProps)(Users);
 
-export default connect(mapStateToProps,mapDispatchToProps)(Users);
+export default MyUserContainer;

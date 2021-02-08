@@ -1,18 +1,14 @@
 import React from "react";
 import styles from "./users.module.css";
 
-
-
 const Users = (props) => {
+  let follow = (id) => {
+    props.follow(id);
+  };
 
-
-  let follow =(id)=>{
-    props.follow(id)
-  }
-
-  let unfollow =(id)=>{
-    props.unfollow(id)
-  }
+  let unfollow = (id) => {
+    props.unfollow(id);
+  };
   return (
     <div>
       {props.users.map((u) => (
@@ -24,17 +20,17 @@ const Users = (props) => {
             <div>
               {u.followed ? (
                 <button
-                  onClick={
-                    unfollow(u.id)
-                  }
+                  onClick={() => {
+                    props.unfollow(u.id);
+                  }}
                 >
                   Unfollow
                 </button>
               ) : (
                 <button
-                  onClick={
-                    follow(u.id)
-                }
+                  onClick={() => {
+                    props.follow(u.id);
+                  }}
                 >
                   Follow
                 </button>

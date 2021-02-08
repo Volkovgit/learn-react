@@ -11,6 +11,7 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import Users from "./components/Users/Users";
 import UsersContainer from "./components/Users/UsersContainer";
+import MyUserContainer from "./components/Users/UsersContainer";
 
 const App = (props) => {
   // debugger;
@@ -39,7 +40,7 @@ const App = (props) => {
                 />
               )}
             />
-            <Route path="/users" render={() => <UsersContainer />} />
+            <Route path="/users" render={() => <MyUserContainer />} />
             <Route path="/news" component={() => <News />} />
             <Route path="/music" component={() => <Music />} />
           </Switch>

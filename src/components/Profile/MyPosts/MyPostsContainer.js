@@ -4,9 +4,7 @@ import {
   updateNewPostTextActionCreator,
 } from "../../../redux/profileReducer";
 import MyPosts from "./MyPosts";
-import Post from "./Post/Post";
 import { connect } from "react-redux";
-import Dialogs from "../../Dialogs/Dialogs";
 
 let mapStateToProps = (state) => {
   // debugger;
