@@ -52,7 +52,7 @@ export const usersReducer = (state = initialState, action) => {
       return {...state, totalUsersCount: action.totalCount}
     }
     case TOGGLE_IS_FETCHING:{
-      return {...state, isFetching:false}
+      return {...state, isFetching:action.isFetching}
     }
     default:
       return state;
@@ -64,4 +64,4 @@ export const unfollowAC = (userId) => ({ type: UNFOLLOW, userId });
 export const setUsersAC = (users) => ({ type: SET_USERS, users });
 export const setCurrentPage= (pageNumber) =>({type: SET_CURRENT_PAGE,pageNumber })
 export const setTotalUsersCount = (totalCount)=>({type: SET_TOTAL_COUNT, totalCount})
-export const setFetchingAC = ()=>({type:TOGGLE_IS_FETCHING});
+export const setFetchingAC = (isFetching)=>({type:TOGGLE_IS_FETCHING,isFetching});
