@@ -1,8 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { followAC, setCurrentPage, setTotalUsersCount, setUsersAC, unfollowAC } from "../../redux/usersReducer";
+import { followAC, setCurrentPage, setFetchingAC, setTotalUsersCount, setUsersAC, unfollowAC } from "../../redux/usersReducer";
 import * as axios from "axios";
 import Users from "./UsersPresentationComponent";
+import styles from './users.module.css'
 // import UsersApiComponent from "./Users";
 
 
@@ -16,6 +17,7 @@ class UsersApiComponent extends React.Component {
       .then((response) => {
         this.props.setusers(response.data.items);
         this.props.setTotalUsersCount(response.data.totalCount);
+        this.props.setFetchingAC();
       });
   }
 
@@ -32,7 +34,8 @@ class UsersApiComponent extends React.Component {
   };
 
   render() {
-    return (
+    return (<>
+    {this.props.isFetching ? <div className={styles.lds_default}><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div> : null}
       <Users
         totalUsersCount={this.props.totalUsersCount}
         pageSize={this.props.pageSize}
@@ -42,6 +45,7 @@ class UsersApiComponent extends React.Component {
         follow={this.props.follow}
         unfollow={this.props.unfollow}
       />
+      </>
     );
   }
 }
@@ -52,7 +56,8 @@ let mapStateToProps = (state) => {
     users: state.usersPage.users,
     totalUsersCount: state.usersPage.totalUsersCount,
     pageSize: state.usersPage.pageSize,
-    currentPage: state.usersPage.currentPage
+    currentPage: state.usersPage.currentPage,
+    isFetching: state.usersPage.isFetching
   };
 };
 
@@ -76,6 +81,9 @@ let mapDispatchToProps = (dispatch) => {
     },
     setTotalUsersCount:(totalCount) =>{
       dispatch(setTotalUsersCount(totalCount));
+    },
+    setFetchingAC:()=>{
+      dispatch(setFetchingAC());
     }
   };
 };
