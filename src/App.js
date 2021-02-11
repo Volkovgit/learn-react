@@ -10,13 +10,14 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import MyUserContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 const App = (props) => {
   // debugger;
   return (
     <Router>
       <div className="app-wrapper">
-        <Header />
+        <HeaderContainer />
         <Navbar
         //  state={props.state.sideBar}
         />
