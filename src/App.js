@@ -9,6 +9,7 @@ import Music from "./components/Musics/Music";
 import Sidebar from "./components/Sidebar/Sidebar";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import MyUserContainer from "./components/Users/UsersContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 
 const App = (props) => {
   // debugger;
@@ -30,9 +31,9 @@ const App = (props) => {
               )}
             />
             <Route
-              path="/profile"
+              path="/profile/:userId"
               render={() => (
-                <Profile
+                <ProfileContainer
                 // store={props.store}
                 />
               )}
