@@ -1,3 +1,5 @@
+import { userAPI } from "../api/api";
+
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
@@ -10,7 +12,7 @@ let initialState = {
   users: [],
   pageSize: 100,
   totalUsersCount: 0,
-  currentPage: 7,
+  currentPage: 1,
   isFetching: true,
   followingInProgress: [],
 };
@@ -77,8 +79,8 @@ export const usersReducer = (state = initialState, action) => {
   }
 };
 
-export const followAC = (userId) => ({ type: FOLLOW, userId });
-export const unfollowAC = (userId) => ({ type: UNFOLLOW, userId });
+export const followSuccess = (userId) => ({ type: FOLLOW, userId });
+export const unfollowSuccess = (userId) => ({ type: UNFOLLOW, userId });
 export const setUsersAC = (users) => ({ type: SET_USERS, users });
 export const setCurrentPage = (pageNumber) => ({
   type: SET_CURRENT_PAGE,
@@ -92,8 +94,44 @@ export const setFetchingAC = (isFetching) => ({
   type: TOGGLE_IS_FETCHING,
   isFetching,
 });
-export const setFollowingProgressAC = (followingInProgress,userId) => ({
+export const setFollowingProgressAC = (followingInProgress, userId) => ({
   type: TOGGLE_IS_FOLLOWING_PROGRESS,
   followingInProgress,
-  userId
+  userId,
 });
+
+export const getUsers = (currentPage, pageSize) => {
+  return (dispatch) => {
+    dispatch(setFetchingAC(true));
+    userAPI.getUsers(currentPage, pageSize).then((response) => {
+      // debugger;
+      dispatch(setFetchingAC(false));
+      dispatch(setUsersAC(response.items));
+      dispatch(setTotalUsersCount(response.totalCount));
+    });
+  };
+};
+
+export const follow = (userId) => {
+  return (dispatch) => {
+    dispatch(setFollowingProgressAC(true, userId));
+    userAPI.follow(userId).then((response) => {
+      if (response.resultCode === 0) {
+        dispatch(followSuccess(userId));
+      }
+      dispatch(setFollowingProgressAC(false, userId));
+    });
+  };
+};
+
+export const unfollow = (userId) => {
+  return (dispatch) => {
+    dispatch(setFollowingProgressAC(true, userId));
+    userAPI.unfollow(userId).then((response) => {
+      if (response.resultCode === 0) {
+        dispatch(unfollowSuccess(userId));
+      }
+      dispatch(setFollowingProgressAC(false, userId));
+    });
+  };
+};

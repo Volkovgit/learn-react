@@ -9,9 +9,11 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { setUserProfile } from "../../redux/profileReducer";
 import { withRouter } from "react-router-dom";
+import {profileInfoAPI} from '../../api/api'
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
+    // debugger;
     let userId = this.props.match.params.userId
     if(!userId){
       userId = 2;
