@@ -21,6 +21,9 @@ const Navbar = (props) =>{
         <div className={classes.item}>
           <NavLink to='/music' activeClassName={classes.active}>Musics</NavLink>
         </div>
+        <div className={classes.item}>
+          <NavLink to='/login' activeClassName={classes.active}>Login</NavLink>
+        </div>
         <div className={`${classes.item} ${classes.sidebar}`}>
           {/* <Sidebar state ={props.state}/> */}
         </div>

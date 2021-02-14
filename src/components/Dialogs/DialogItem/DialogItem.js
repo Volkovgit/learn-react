@@ -5,7 +5,7 @@ import cssStyle from "../Dialogs.module.css";
 const DialogItem = (props) => {
   let path = "/dialogs/" + props.id;
   return (
-    <div class={cssStyle.dialog}>
+    <div className={cssStyle.dialog}>
       <NavLink to={path}>{props.name}</NavLink>
     </div>
   );

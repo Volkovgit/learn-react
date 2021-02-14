@@ -48,15 +48,17 @@ export const profileInfoAPI = {
   },
 };
 
-export const HeaderAPI = {
+export const authAPI = {
   authMe() {
     return instance.get(`auth/me`, {
       withCredentials: true,
-    }).then((response) => {
-      if(response.data.resultCode === 0){
-        let{id,login,email} = response.data.data;
-        return {id,login,email}
-      }
-    });
+    }).then((response) => (response)
+    // {
+    //   if(response.data.resultCode == 0){
+    //     let{id,login,email} = response.data.data;
+    //     return {id,login,email}
+    //   }
+    // }
+    );
   },
 };
