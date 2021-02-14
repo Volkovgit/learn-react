@@ -26,6 +26,7 @@ export const userAPI = {
       .then((responce) => responce.data);
   },
   follow(userId) {
+    debugger;
     return instance
       .post(
         `https://social-network.samuraijs.com/api/1.0/follow/${userId}`,
@@ -42,13 +43,8 @@ export const userAPI = {
 };
 
 export const profileInfoAPI = {
-  getUserInfo(userId) {
+  getUserInfo(userId = 2) {
     return instance
-      .get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
-      .then((response) => {
-        // // debugger;
-        // response.data;
-        // // this.props.setUserProfile(response.data);
-      });
+      .get(`profile/${userId}`);
   },
 };
